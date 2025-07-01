@@ -7,7 +7,6 @@ body {
   background-size: cover;
   color: #e9d6ff;
   padding: 2rem;
-  backdrop-filter: blur(8px);
 }
 
 h1 {
@@ -21,6 +20,7 @@ h1 {
   padding: 1.5rem;
   border-radius: 1rem;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  backdrop-filter: blur(8px);
 }
 
 .letter {
