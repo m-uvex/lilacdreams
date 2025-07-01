@@ -2,7 +2,7 @@ body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background: 
-    linear-gradient(rgba(180, 130, 210, 0.4), rgba(150, 90, 180, 0.6)),
+    linear-gradient(rgba(180, 130, 210, 0.2), rgba(150, 90, 180, 0.6)),
     url('https://images5.alphacoders.com/973/973328.jpg') no-repeat center center fixed;
   background-size: cover;
   color: #e9d6ff;
