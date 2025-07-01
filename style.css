@@ -2,16 +2,16 @@ body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background: 
-    linear-gradient(rgba(20, 15, 40, 0.6), rgba(20, 15, 40, 0.6)),
+    linear-gradient(rgba(180, 130, 210, 0.4), rgba(150, 90, 180, 0.6)),
     url('https://images5.alphacoders.com/973/973328.jpg') no-repeat center center fixed;
   background-size: cover;
-  color: #fff;
+  color: #e9d6ff;
   padding: 2rem;
   backdrop-filter: blur(8px);
 }
 
 h1 {
-  color: #ffccf9;
+  color: #d8a9ff;
   font-size: 2.5rem;
 }
 
