@@ -1,7 +1,9 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: url('https://images5.alphacoders.com/973/973328.jpg') no-repeat center center fixed;
+  background: 
+    linear-gradient(rgba(20, 15, 40, 0.6), rgba(20, 15, 40, 0.6)),
+    url('https://images5.alphacoders.com/973/973328.jpg') no-repeat center center fixed;
   background-size: cover;
   color: #fff;
   padding: 2rem;
