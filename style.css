@@ -1,12 +1,13 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: 
-    linear-gradient(rgba(20, 15, 40, 0.4), rgba(20, 15, 40, 0.4)),
+  background:
+    linear-gradient(rgba(28, 20, 45, 0.6), rgba(28, 20, 45, 0.6)),
     url('https://images5.alphacoders.com/973/973328.jpg') no-repeat center center fixed;
   background-size: cover;
-  color: #e9d6ff;
+  color: #edd9ff;
   padding: 2rem 2rem 2rem 2rem;
+  min-height: 100vh;
 }
 
 .dock {
@@ -22,8 +23,8 @@ body {
 }
 
 .tabs {
-  background: rgba(40, 25, 60, 0.32);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.28);
+  background: rgba(46, 36, 69, 0.42);
+  box-shadow: 0 4px 24px rgba(65, 44, 104, 0.26);
   border-radius: 1.5rem;
   padding: 0.4rem 2rem 0.4rem 2rem;
   display: flex;
@@ -36,44 +37,79 @@ body {
   background: none;
   border: none;
   outline: none;
-  color: #e9d6ff;
+  color: #edd9ff;
   font-size: 1.11rem;
   font-family: inherit;
   cursor: pointer;
   padding: 0.6rem 1.5rem;
   border-radius: 1rem;
-  transition: background 0.13s, color 0.13s, font-weight 0.13s;
+  transition: background 0.13s, color 0.13s, font-weight 0.13s, box-shadow 0.13s;
   font-weight: 400;
   letter-spacing: 0.03em;
+  box-shadow: none;
 }
 .tab-btn.active, .tab-btn:hover {
-  background: rgba(105, 61, 156, 0.23);
+  background: linear-gradient(90deg, #b070f7 0%, #a070e2 100%);
   color: #fff;
   font-weight: 600;
+  box-shadow: 0 0 6px 1px #e2aaff4d;
 }
 
+/* Tab Content Transitions */
 .tab-content {
   display: none;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.45s cubic-bezier(.55,.08,.44,1.05), transform 0.45s cubic-bezier(.55,.08,.44,1.05);
   margin-top: 5.2rem;
+  will-change: opacity, transform;
 }
 .tab-content.active {
   display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 h1 {
-  color: #d8a9ff;
+  color: #cfa6fc;
   font-size: 2.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 16px #a16ee244;
+}
+
+h2 {
+  color: #b47cff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 8px #a16ee230;
 }
 
 .section {
   margin-bottom: 2rem;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(60, 40, 100, 0.27);
   padding: 1.5rem;
   border-radius: 1rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  backdrop-filter: blur(8px);
+  box-shadow: 0 0 18px 4px #563b6a33;
+  backdrop-filter: blur(10px);
+  border: 1.5px solid #b070f730;
 }
 
 .letter {
   white-space: pre-wrap;
+  line-height: 1.7;
+  font-size: 1.08rem;
+  color: #f1e5ff;
+  text-shadow: 0 1px 10px #a16ee230;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b070f733;
+  border-radius: 1rem;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
 }
