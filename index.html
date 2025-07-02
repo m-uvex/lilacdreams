@@ -61,15 +61,26 @@
   </div>
 
   <script>
+    // Tab switching with slide+fade transitions
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
 
     tabBtns.forEach(btn => {
       btn.addEventListener('click', () => {
+        if (btn.classList.contains('active')) return;
+        // Remove active from all
         tabBtns.forEach(b => b.classList.remove('active'));
-        tabContents.forEach(tc => tc.classList.remove('active'));
+        tabContents.forEach(tc => {
+          tc.classList.remove('active');
+          // Remove display after transition for out-fading content
+          setTimeout(() => { if(!tc.classList.contains('active')) tc.style.display = "none"; }, 450);
+        });
+        // Add active to clicked
         btn.classList.add('active');
-        document.getElementById(btn.dataset.tab).classList.add('active');
+        const nextTab = document.getElementById(btn.dataset.tab);
+        nextTab.style.display = "block"; // Ensure it can animate in
+        // Let browser process display then add active for transition
+        setTimeout(() => { nextTab.classList.add('active'); }, 10);
       });
     });
   </script>
