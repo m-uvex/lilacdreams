@@ -3,42 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday Meicy</title>
+  <title>Our Little World</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Happy Birthday, Meicy 🩷</h1>
 
-  <div class="section letter">
-    <p>dear meicy,<br><br>
-    i know we met in the most random way possible but somehow it feels like the most natural thing ever<br>
-    in just a week, u became my safe place, my fav notification, my lil daydream and my cutie patootie<br>
-    i never thought someone could get me like u do<br>
-    the chaos, the millions of reels, the late-night convos about our future together — all of it means more than i let on<br><br>
-
-    u make distance feel less distant, and waiting worth it<br>
-    and even tho we’re not in the same place, u still feel close<br>
-    thank u for being u<br>
-    happy birthday, my one and only love<br>
-    this site’s a lil piece of my heart, just for u<br>
-    hope u feel loved every time u see it<br>
-    (<b>you better. i spent way too long on this just for you :3</b>)<br><br>
-
-    — Your nerd</p>
+  <!-- Floating dock nav -->
+  <div id="dock">
+    <button class="dock-btn active" data-tab="anniversary">Anniversary</button>
+    <button class="dock-btn" data-tab="birthday">Birthday</button>
+    <!-- add more tabs later here -->
   </div>
 
-  <div class="section playlist">
-    <h2>Our Story as a Playlist 🎧</h2>
-    <iframe 
-      src="https://open.spotify.com/embed/playlist/3jdBlIk9CSnFJu1K3FEFvM" 
-      width="100%" 
-      height="380" 
-      frameborder="0" 
-      allowtransparency="true" 
-      allow="encrypted-media"
-      style="border-radius: 1rem;">
-    </iframe>
+  <!-- Pages -->
+  <div id="anniversary" class="page active">
+    <h1>Happy Anniversary, Meicy 🩷</h1>
+
+    <div class="section letter">
+      <p>dear meicy,<br><br>
+      i know we met in the most random way possible but somehow it feels like the most natural thing ever<br>
+      in just a week, u became my safe place, my fav notification, my lil daydream and my cutie patootie<br>
+      i never thought someone could get me like u do<br>
+      the chaos, the millions of reels, the late-night convos about our future together — all of it means more than i let on<br><br>
+
+      u make distance feel less distant, and waiting worth it<br>
+      and even tho we’re not in the same place, u still feel close<br>
+      thank u for being u<br>
+      happy anniversary, my one and only love<br>
+      this site’s a lil piece of my heart, just for u<br>
+      hope u feel loved every time u see it<br>
+      (<b>you better. i spent way too long on this just for you :3</b>)<br><br>
+
+      — Your nerd</p>
+    </div>
+
+    <div class="section playlist">
+      <h2>Our Story as a Playlist 🎧</h2>
+      <iframe 
+        src="https://open.spotify.com/embed/playlist/3jdBlIk9CSnFJu1K3FEFvM" 
+        width="100%" 
+        height="380" 
+        frameborder="0" 
+        allowtransparency="true" 
+        allow="encrypted-media"
+        style="border-radius: 1rem;">
+      </iframe>
+    </div>
   </div>
+
+  <div id="birthday" class="page">
+    <h1>🎂 Coming soon...</h1>
+    <div class="section">
+      <p>This tab will hold her bday gift site once we're done 💜</p>
+    </div>
+  </div>
+
+  <script>
+    const btns = document.querySelectorAll(".dock-btn");
+    const pages = document.querySelectorAll(".page");
+    let currentTab = "anniversary";
+
+    btns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (btn.dataset.tab === currentTab) return;
+
+        // remove current active
+        document.getElementById(currentTab).classList.remove("active");
+        document.querySelector(`.dock-btn[data-tab="${currentTab}"]`).classList.remove("active");
+
+        // switch to new tab
+        currentTab = btn.dataset.tab;
+        document.getElementById(currentTab).classList.add("active");
+        btn.classList.add("active");
+      });
+    });
+  </script>
 
 </body>
 </html>
