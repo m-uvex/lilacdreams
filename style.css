@@ -1,42 +1,54 @@
-/* dock nav */
 #dock {
   position: fixed;
   top: 1rem;
   right: 1rem;
   display: flex;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 1rem;
-  z-index: 999;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  gap: 0.75rem;
+  padding: 0.6rem 1.2rem;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 1.2rem;
+  z-index: 10000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  user-select: none;
 }
 
 .dock-btn {
   background: transparent;
   border: none;
-  color: #fff;
-  font-weight: bold;
+  color: #eee;
+  font-weight: 600;
   cursor: pointer;
-  transition: color 0.2s ease;
-  font-size: 0.95rem;
+  transition: color 0.25s ease, transform 0.2s ease;
+  font-size: 1rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+}
+
+.dock-btn:hover:not(.active) {
+  color: #bfa0ff;
+  transform: scale(1.05);
 }
 
 .dock-btn.active {
-  color: #d9a9ff;
+  color: #d8a9ff;
   text-decoration: underline;
+  cursor: default;
+  transform: scale(1.1);
 }
 
 .page {
-  display: none;
   opacity: 0;
   transform: translateX(40px);
-  transition: all 0.5s ease;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
 }
 
 .page.active {
-  display: block;
   opacity: 1;
   transform: translateX(0);
+  pointer-events: auto;
+  position: relative;
 }
