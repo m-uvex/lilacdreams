@@ -113,19 +113,3 @@ h2 {
   width: 8px;
   background: transparent;
 }
-
-@media (max-width: 600px) {
-  .dock {
-    padding-top: 0.2rem;
-  }
-  .tabs {
-    padding: 0.2rem 0.5rem;
-    gap: 0.4rem;
-    border-radius: 1rem;
-  }
-  .tab-btn {
-    font-size: 0.95rem;
-    padding: 0.4rem 0.7rem;
-    border-radius: 0.7rem;
-  }
-}
