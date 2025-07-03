@@ -143,72 +143,72 @@ h2 {
 .timeline {
   position: relative;
   margin: 0;
-  padding: 0 0 0 60px; 
+  padding: 0 0 0 40px;
 }
 
 .timeline::before {
   content: '';
   position: absolute;
-  left: 24px;
+  left: 18px;
   top: 0;
   bottom: 0;
   width: 4px;
   background: #b39ddb;
   border-radius: 2px;
-  box-shadow: 0 0 14px 2px #b39ddb77;
 }
 
 .timeline-event {
   position: relative;
-  margin-bottom: 54px;
-  min-height: 90px;
+  margin-bottom: 44px;
+  /* Remove margin-top here, handled by card spacing */
+}
+
+.timeline-content {
+  background: rgba(60, 40, 100, 0.27);
+  color: #f1e5ff;
+  padding: 1.2rem 1.4rem 1.3rem 1.4rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 18px 4px #563b6a33;
+  backdrop-filter: blur(10px);
+  border: 1.5px solid #b070f730;
+  margin-left: 0;
+  position: relative;
+  min-width: 160px;
 }
 
 .timeline-date {
   position: absolute;
-  left: -48px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: linear-gradient(90deg, #b39ddb 60%, #7c43bd 100%);
+  left: 18px;
+  top: -22px;
+  transform: translateY(-100%);
+  background: linear-gradient(90deg, #b070f7 0%, #a070e2 100%);
   color: #fff;
-  padding: 7px 20px;
-  border-radius: 22px;
-  font-weight: 700;
-  border: 0;
-  font-size: 1rem;
-  letter-spacing: 0.04em;
-  box-shadow: 0 2px 16px #b39ddb88;
+  padding: 5px 18px;
+  border-radius: 20px;
+  font-weight: bold;
+  border: 2px solid #b39ddb;
+  font-size: 0.98rem;
   white-space: nowrap;
-  z-index: 1;
-  text-shadow: 0 1px 8px #7c43bd33;
-}
-
-.timeline-content {
-  background: linear-gradient(110deg, #563b6a 75%, #b39ddb33 100%);
-  color: #edd9ff;
-  padding: 24px 26px 18px 32px;
-  border-radius: 18px;
-  box-shadow: 0 4px 18px 2px #a070e233;
-  margin-left: 0;
-  border-left: 3px solid #b39ddb;
-  position: relative;
+  box-shadow: 0 1px 10px #a16ee230;
+  letter-spacing: 0.02em;
+  z-index: 2;
 }
 
 .timeline-content h3 {
-  margin-top: 0;
-  margin-bottom: 0.4em;
-  color: #cfa6fc;
-  font-size: 1.25rem;
-  text-shadow: 0 1px 6px #7c43bd22;
+  margin-top: 0.5em;
+  margin-bottom: 0.3em;
+  color: #b47cff;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 8px #a16ee230;
 }
 
 .timeline-img {
   width: 100%;
-  max-width: 240px;
-  border-radius: 12px;
+  max-width: 230px;
+  border-radius: 8px;
   margin-bottom: 0.7em;
   margin-top: 0.2em;
-  box-shadow: 0 1px 16px #a16ee233;
+  box-shadow: 0 1px 8px #a16ee222;
   display: block;
-  border: 2px solid #b39ddb88;
+  border: 1.5px solid #b070f730;
 }
