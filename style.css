@@ -179,7 +179,7 @@ h2 {
 .timeline-date {
   position: absolute;
   left: -40px;
-  top: 15px;
+  top: 16px;
   transform: translateY(-100%);
   background: linear-gradient(90deg, #b070f7 0%, #a070e2 100%);
   color: #fff;
