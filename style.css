@@ -133,8 +133,6 @@ h2 {
   }
 }
 
-/* ...your existing styles... */
-
 .timeline-section {
   padding: 0;
   background: none;
@@ -145,60 +143,72 @@ h2 {
 .timeline {
   position: relative;
   margin: 0;
-  padding: 0 0 0 40px;
+  padding: 0 0 0 60px; 
 }
 
 .timeline::before {
   content: '';
   position: absolute;
-  left: 18px;
+  left: 24px;
   top: 0;
   bottom: 0;
   width: 4px;
   background: #b39ddb;
   border-radius: 2px;
+  box-shadow: 0 0 14px 2px #b39ddb77;
 }
 
 .timeline-event {
   position: relative;
-  margin-bottom: 44px;
+  margin-bottom: 54px;
+  min-height: 90px;
 }
 
 .timeline-date {
   position: absolute;
-  left: -38px;
-  top: 12px;
-  background: #fff;
-  color: #7c43bd;
-  padding: 5px 14px;
-  border-radius: 20px;
-  font-weight: bold;
-  border: 2px solid #b39ddb;
-  font-size: 0.98rem;
+  left: -48px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, #b39ddb 60%, #7c43bd 100%);
+  color: #fff;
+  padding: 7px 20px;
+  border-radius: 22px;
+  font-weight: 700;
+  border: 0;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  box-shadow: 0 2px 16px #b39ddb88;
   white-space: nowrap;
+  z-index: 1;
+  text-shadow: 0 1px 8px #7c43bd33;
 }
 
 .timeline-content {
-  background: #ede7f6;
-  color: #351a4c;
-  padding: 18px 22px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(124, 67, 189, 0.09);
+  background: linear-gradient(110deg, #563b6a 75%, #b39ddb33 100%);
+  color: #edd9ff;
+  padding: 24px 26px 18px 32px;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px 2px #a070e233;
   margin-left: 0;
+  border-left: 3px solid #b39ddb;
+  position: relative;
 }
 
 .timeline-content h3 {
   margin-top: 0;
-  margin-bottom: 0.3em;
-  color: #a070e2;
+  margin-bottom: 0.4em;
+  color: #cfa6fc;
+  font-size: 1.25rem;
+  text-shadow: 0 1px 6px #7c43bd22;
 }
 
 .timeline-img {
   width: 100%;
-  max-width: 230px;
-  border-radius: 8px;
+  max-width: 240px;
+  border-radius: 12px;
   margin-bottom: 0.7em;
   margin-top: 0.2em;
-  box-shadow: 0 1px 8px #a16ee222;
+  box-shadow: 0 1px 16px #a16ee233;
   display: block;
+  border: 2px solid #b39ddb88;
 }
