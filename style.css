@@ -212,3 +212,31 @@ h2 {
   display: block;
   border: 1.5px solid #b070f730;
 }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery-item img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  object-fit: cover;
+}
+
+.caption {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #b57edc; /* lilac! */
+  text-align: center;
+}
