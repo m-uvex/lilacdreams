@@ -5,16 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🩷 LilacDreams 🩷</title>
   <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="dock">
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="home">Home</button>
-      <button class="tab-btn" data-tab="timeline">Timeline</button>
-      <button class="tab-btn" data-tab="about">About Us</button>
-    </div>
-  </div>
-<head>
   <style>
     p {
       margin-left: 0;
@@ -23,6 +13,15 @@
     }
   </style>
 </head>
+<body>
+  <div class="dock">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="home">Home</button>
+      <button class="tab-btn" data-tab="timeline">Timeline</button>
+      <button class="tab-btn" data-tab="playlist">Playlist</button>
+      <button class="tab-btn" data-tab="about">About Us</button>
+    </div>
+  </div>
 
   <div class="tab-content active" id="home">
     <h1>Welcome Home, Meicy 🩷</h1>
@@ -39,63 +38,57 @@
       this site’s a lil piece of my heart, just for u<br>
       hope u feel loved every time u see it<br>
       (<b>you better. i spent way too long on this just for you :3</b>)<br>
-Now have fun exploring around!<br><br>
+      Now have fun exploring around!<br><br>
       — Your nerd</p>
     </div>
-    <div class="section playlist">
-      <h2>Our Story as a Playlist 🎧</h2>
-      <iframe 
-        src="https://open.spotify.com/embed/playlist/3jdBlIk9CSnFJu1K3FEFvM" 
-        width="100%" 
-        height="380" 
-        frameborder="0" 
-        allowtransparency="true" 
-        allow="encrypted-media"
-        style="border-radius: 1rem;">
-      </iframe>
+  </div>
+
+  <div class="tab-content" id="timeline">
+    <h1>Our Timeline 🕰️</h1>
+    <div class="timeline-section section">
+      <div class="timeline">
+        <!-- Timeline events here -->
+        <div class="timeline-event">
+          <div class="timeline-date">Apr 3rd, 2025</div>
+          <div class="timeline-content">
+            <h3>Meet-Cute</h3>
+            <img src="Gallery/meet_cute.jpg" alt="Meet-Cute" class="timeline-img"/>
+            <p>The first time we've ever met.</p>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="timeline-date">Apr 3rd, 2025</div>
+          <div class="timeline-content">
+            <h3>First chat outside HumanOrNot</h3>
+            <img src="Gallery/first_chat" alt="First-proper-chat" class="timeline-img"/>
+            <p>We moved to discord and started a real chat outside of a game. continued the roleplay and you LOVED to scream :3</p>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="timeline-date">PlaceHolder</div>
+          <div class="timeline-content">
+            <h3>PlaceHolder</h3>
+            <img src="Gallery/PlaceHolder" alt="PlaceHolder" class="timeline-img"/>
+            <p>PlaceHolder</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-<div class="tab-content" id="timeline">
-  <h1>Our Timeline 🕰️</h1>
-  <div class="timeline-section section">
-    <div class="timeline">
-      <!-- Event 1 -->
-      <div class="timeline-event">
-        <div class="timeline-date">Apr 3rd, 2025</div>
-        <div class="timeline-content">
-          <h3>Meet-Cute</h3>
-          <img src="Gallery/meet_cute.jpg" alt="Meet-Cute" class="timeline-img"/>
-          <p>The first time we've ever met.</p>
-        </div>
-      </div>
-      <!-- Event 1 -->
-
-      <!-- Event 2 -->
-      <div class="timeline-event">
-        <div class="timeline-date">Apr 3rd, 2025</div>
-        <div class="timeline-content">
-          <h3>First chat outside HumanOrNot</h3>
-          <img src="Gallery/first_chat" alt="First-proper-chat" class="timeline-img"/>
-          <p>We moved to discord and started a real chat outside of a game. continued the roleplay and you LOVED to scream :3</p>
-        </div>
-      </div>
-      <!-- Event 2 -->
-
-      <!-- Event 3 -->
-      <div class="timeline-event">
-        <div class="timeline-date">PlaceHolder</div>
-        <div class="timeline-content">
-          <h3>PlaceHolder</h3>
-          <img src="Gallery/PlaceHolder" alt="PlaceHolder" class="timeline-img"/>
-          <p>PlaceHolder</p>
-        </div>
-      </div>
-      <!-- Event 3 -->
-
-    </div>
+  <!-- NEW PLAYLIST TAB -->
+  <div class="tab-content" id="playlist">
+    <h2>Our Story as a Playlist 🎧</h2>
+    <iframe 
+      src="https://open.spotify.com/embed/playlist/3jdBlIk9CSnFJu1K3FEFvM" 
+      width="100%" 
+      height="380" 
+      frameborder="0" 
+      allowtransparency="true" 
+      allow="encrypted-media"
+      style="border-radius: 1rem;">
+    </iframe>
   </div>
-</div>
 
   <div class="tab-content" id="about">
     <h1>About Us 💌</h1>
@@ -116,16 +109,19 @@ Now have fun exploring around!<br><br>
         tabBtns.forEach(b => b.classList.remove('active'));
         tabContents.forEach(tc => {
           tc.classList.remove('active');
-          // Remove display after transition for out-fading content
           setTimeout(() => { if(!tc.classList.contains('active')) tc.style.display = "none"; }, 450);
         });
         // Add active to clicked
         btn.classList.add('active');
         const nextTab = document.getElementById(btn.dataset.tab);
-        nextTab.style.display = "block"; // Ensure it can animate in
-        // Let browser process display then add active for transition
+        nextTab.style.display = "block";
         setTimeout(() => { nextTab.classList.add('active'); }, 10);
       });
+    });
+
+    // Optional: Make sure only the active tab is visible on load
+    tabContents.forEach(tc => {
+      if (!tc.classList.contains('active')) tc.style.display = "none";
     });
   </script>
 </body>
