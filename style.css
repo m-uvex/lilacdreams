@@ -240,3 +240,79 @@ h2 {
   color: #b57edc; /* lilac! */
   text-align: center;
 }
+
+/* Modal overlay styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(35, 18, 56, 0.75);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: #25173a;
+  color: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 40px #0005;
+  min-width: 310px;
+  max-width: 95vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: left;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  right: 1.5rem;
+  top: 1.3rem;
+  background: none;
+  border: none;
+  font-size: 2.2rem;
+  color: #b47cff;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.close-modal:hover {
+  color: #fff;
+}
+
+.list-titles {
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-start;
+  margin-top: 2.5rem;
+}
+
+.list-title-btn {
+  font-size: 1.2rem;
+  padding: 0.7rem 2.2rem;
+  border-radius: 1.1rem;
+  background: linear-gradient(90deg, #b070f7 0%, #a070e2 100%);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 12px #a16ee23a;
+  margin-bottom: 0.2rem;
+  transition: background 0.2s, color 0.2s;
+}
+.list-title-btn:hover {
+  background: #563b6a;
+  color: #b47cff;
+}
+
+#modal-list {
+  margin: 2rem 0 0 0;
+  padding-left: 1.3em;
+  font-size: 1.12rem;
+  line-height: 1.8;
+}
