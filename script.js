@@ -1,28 +1,33 @@
 // --- List Data ---
 const listsData = {
   why: [
-    "You always make me smile, even on my worst days.",
-    "Your laugh is the cutest sound in the world.",
-    "You support my nerdy ideas (like this website!).",
-    "You care so deeply for the people you love.",
-    "You never fail to surprise me.",
-    "You make every moment feel special.",
-    "You're the best part of my every day.",
-    "You make distance feel less distant.",
-    "You remember the little things that matter.",
-    "You let me be my weird self and love me for it."
+    "You always make me smile, even on my worst days",
+    "Your laugh is the cutest sound in the world",
+    "You support my nerdy ideas (like this website!)",
+    "You care so deeply for the people you love",
+    "You make every moment feel special",
+    "You're the best part of my every day",
+    "You make distance feel less distant",
+    "You remember the little things that matter",
+    "You let me be my weird self and love me for it",
+    "You give me cute nicknames",
+    "You make me feel safe, even when we’re far apart",
+    "You have a very unique personality and never remind me of anyone else",
+    "You listen, even when I ramble about random stuff",
+    "You’re always on my mind, like all the time",
+    "You made me believe in love again"
   ],
   dates: [
-    "Late-night drive with music.",
-    "Stargazing picnic.",
-    "Cooking together (and making a mess).",
-    "Movie marathon in pajamas.",
-    "Building a pillow fort.",
-    "Visiting a cute café.",
-    "Dancing in the rain.",
-    "Trying a new hobby together.",
-    "Going to an amusement park.",
-    "Reading each other our favorite books."
+    "Late-night drive with music",
+    "Stargazing picnic",
+    "Cooking together (and making a mess)",
+    "Movie marathon in pajamas",
+    "Building a pillow fort",
+    "Dancing in the rain",
+    "Ferris wheel date",
+    "Going Urbex",
+    "Playing UNO",
+    "Building Lego sets together"
   ],
   travel: [
     "See cherry blossoms in Japan.",
@@ -37,28 +42,22 @@ const listsData = {
     "Roadtrip with just the two of us."
   ],
   Names: [
-    "Aster",
-    "Eli",
+    "Milo",
+    "Luna",
     "Lila",
-    "Sora",
-    "Noah",
-    "Nova",
-    "Mira",
-    "Eren",
-    "Rhea",
-    "Juno"
+    "Aria",
   ],
   freaky: [
-    "In a tent while camping.",
-    "In the shower.",
-    "On a rooftop under the stars.",
-    "In a photo booth.",
-    "On the beach at night.",
-    "In the backseat of a car.",
-    "In a cozy blanket fort.",
-    "On a balcony overlooking the city.",
-    "In a fancy hotel room.",
-    "On a rainy day by the window."
+    "In the backseats",
+    "In our kitchen",
+    "On the wall",
+    "On a table",
+    "While watching a movie",
+    "In a van on a roadtrip at different cool looking views",
+    "In the shower",
+    "In Davey's Place",
+    "In a tent while camping",
+    "In a closet",
   ]
 };
 
