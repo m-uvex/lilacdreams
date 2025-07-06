@@ -7,6 +7,9 @@
   --text-accent: #cfa6fc;
   --card-bg: rgba(60, 40, 100, 0.27);
   --box-shadow: 0 0 18px 4px #563b6a33;
+  --anim-fast: 0.18s cubic-bezier(.4,0,.2,1);
+  --anim-med: 0.45s cubic-bezier(.55,.08,.44,1.05);
+  --anim-slow: 0.8s cubic-bezier(.55,.08,.44,1.05);
 }
 
 body {
@@ -19,6 +22,12 @@ body {
   color: var(--text-light);
   padding: 2rem;
   min-height: 100vh;
+  /* Fade in on load */
+  opacity: 0;
+  animation: body-fade-in 1s ease forwards;
+}
+@keyframes body-fade-in {
+  to { opacity: 1; }
 }
 
 .dock {
@@ -31,6 +40,11 @@ body {
   justify-content: center;
   padding-top: 0.75rem;
   pointer-events: none;
+  animation: dock-drop 0.9s cubic-bezier(.68,-0.55,.27,1.55) 0.3s backwards;
+}
+@keyframes dock-drop {
+  0% { transform: translateY(-60px); opacity: 0;}
+  100% { transform: translateY(0); opacity: 1;}
 }
 
 .tabs {
@@ -54,31 +68,87 @@ body {
   cursor: pointer;
   padding: 0.6rem 1.5rem;
   border-radius: 1rem;
-  transition: background 0.13s, color 0.13s, font-weight 0.13s, box-shadow 0.13s;
   font-weight: 400;
   letter-spacing: 0.03em;
   box-shadow: none;
+  position: relative;
+  transition: 
+    background var(--anim-fast),
+    color var(--anim-fast),
+    font-weight var(--anim-fast),
+    box-shadow var(--anim-fast),
+    transform var(--anim-fast);
+  z-index: 1;
+  overflow: hidden;
+}
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 0; height: 0;
+  background: rgba(176, 112, 247, 0.24);
+  border-radius: 100%;
+  transform: translate(-50%,-50%);
+  transition: width 0.3s, height 0.3s;
+  z-index: -1;
+}
+.tab-btn:active::after {
+  width: 150%; height: 400%;
 }
 .tab-btn.active, .tab-btn:hover {
   background: linear-gradient(90deg, var(--primary-lilac) 0%, var(--secondary-lilac) 100%);
   color: #fff;
   font-weight: 600;
-  box-shadow: 0 0 6px 1px #e2aaff4d;
+  box-shadow: 0 0 12px 2px #e2aaff4d;
+  transform: scale(1.07) translateY(-1px);
 }
 
-/* Tab Content Transitions */
+.tab-btn:not(.active):hover {
+  filter: brightness(1.15);
+}
+
+.tab-btn:not(.active) {
+  transition: filter 0.2s, transform 0.19s, box-shadow 0.19s;
+}
+
+.tab-btn:focus-visible {
+  outline: 2px solid var(--primary-lilac);
+}
+
+/* Animated tab content transitions */
 .tab-content {
   display: none;
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.45s cubic-bezier(.55,.08,.44,1.05), transform 0.45s cubic-bezier(.55,.08,.44,1.05);
+  transform: translateY(40px) scale(0.98);
+  transition: 
+    opacity var(--anim-med),
+    transform var(--anim-med);
   margin-top: 5.2rem;
   will-change: opacity, transform;
+  animation: none;
 }
 .tab-content.active {
   display: block;
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  animation: tab-in var(--anim-med) backwards;
+}
+@keyframes tab-in {
+  0% { opacity: 0; transform: translateY(60px) scale(0.97);}
+  100% { opacity: 1; transform: translateY(0) scale(1);}
+}
+
+h1, h2 {
+  opacity: 0;
+  animation: fade-slide-in 0.7s cubic-bezier(.68,-0.55,.27,1.55) 0.2s forwards;
+}
+.tab-content.active h1,
+.tab-content.active h2 {
+  animation-delay: 0.15s;
+}
+@keyframes fade-slide-in {
+  0% { opacity: 0; transform: translateY(24px);}
+  100% { opacity: 1; transform: translateY(0);}
 }
 
 h1 {
@@ -106,6 +176,11 @@ h2 {
   box-shadow: var(--box-shadow);
   backdrop-filter: blur(10px);
   border: 1.5px solid #b070f730;
+  opacity: 0;
+  animation: section-fadein var(--anim-slow) 0.3s forwards;
+}
+@keyframes section-fadein {
+  to { opacity: 1; }
 }
 
 .letter {
@@ -114,6 +189,7 @@ h2 {
   font-size: 1.08rem;
   color: #f1e5ff;
   text-shadow: 0 1px 10px #a16ee230;
+  animation: fade-slide-in 0.7s .35s both;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -155,21 +231,29 @@ h2 {
   position: relative;
   margin: 0;
   padding: 0 0 0 40px;
+  animation: timeline-dropin 0.8s 0.3s backwards;
 }
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 18px;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: #b39ddb;
-  border-radius: 2px;
+@keyframes timeline-dropin {
+  0% { opacity: 0; transform: translateY(50px);}
+  100% { opacity: 1; transform: translateY(0);}
 }
+
 .timeline-event {
   position: relative;
   margin-bottom: 44px;
+  opacity: 0;
+  animation: timeline-event-fadein 0.7s cubic-bezier(.68,-0.55,.27,1.55) forwards;
 }
+.timeline-event:nth-child(1) { animation-delay: 0.1s;}
+.timeline-event:nth-child(2) { animation-delay: 0.22s;}
+.timeline-event:nth-child(3) { animation-delay: 0.34s;}
+.timeline-event:nth-child(4) { animation-delay: 0.46s;}
+
+@keyframes timeline-event-fadein {
+  from { opacity: 0; transform: translateY(60px) scale(0.97);}
+  to   { opacity: 1; transform: translateY(0) scale(1);}
+}
+
 .timeline-content {
   background: var(--card-bg);
   color: #f1e5ff;
@@ -181,7 +265,13 @@ h2 {
   margin-left: 0;
   position: relative;
   min-width: 160px;
+  transition: box-shadow 0.2s, transform 0.2s;
 }
+.timeline-content:hover {
+  box-shadow: 0 0 32px 8px #b070f777;
+  transform: scale(1.03) translateY(-3px);
+}
+
 .timeline-date {
   position: absolute;
   left: -40px;
@@ -198,7 +288,10 @@ h2 {
   box-shadow: 0 1px 10px #a16ee230;
   letter-spacing: 0.02em;
   z-index: 2;
+  opacity: 0;
+  animation: fade-slide-in 0.6s 0.42s forwards;
 }
+
 .timeline-content h3 {
   margin-top: 0.5em;
   margin-bottom: 0.3em;
@@ -206,6 +299,7 @@ h2 {
   letter-spacing: 0.01em;
   text-shadow: 0 1px 8px #a16ee230;
 }
+
 .timeline-img {
   width: 100%;
   max-width: 230px;
@@ -215,6 +309,8 @@ h2 {
   box-shadow: 0 1px 8px #a16ee222;
   display: block;
   border: 1.5px solid #b070f730;
+  opacity: 0;
+  animation: fade-slide-in 0.7s 0.48s both;
 }
 
 .gallery-grid {
@@ -228,19 +324,39 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  opacity: 0;
+  transform: translateY(20px) scale(0.97);
+  animation: gallery-in 0.8s cubic-bezier(.68,-0.55,.27,1.55) forwards;
 }
+.gallery-item:nth-child(1) { animation-delay: 0.13s;}
+.gallery-item:nth-child(2) { animation-delay: 0.24s;}
+.gallery-item:nth-child(3) { animation-delay: 0.35s;}
+.gallery-item:nth-child(4) { animation-delay: 0.46s;}
+
+@keyframes gallery-in {
+  to { opacity: 1; transform: translateY(0) scale(1);}
+}
+
 .gallery-item img {
   width: 100%;
   max-width: 320px;
   border-radius: 1rem;
   box-shadow: 0 2px 12px rgba(0,0,0,0.08);
   object-fit: cover;
+  transition: transform 0.32s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.32s;
 }
+.gallery-item img:hover {
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow: 0 8px 36px 3px #b070f733;
+}
+
 .caption {
   margin-top: 0.5rem;
   font-size: 1rem;
   color: #b57edc;
   text-align: center;
+  opacity: 0;
+  animation: fade-slide-in 0.7s 0.6s forwards;
 }
 
 /* Modal overlay styles */
@@ -252,9 +368,19 @@ h2 {
   background: rgba(35, 18, 56, 0.75);
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--anim-med);
 }
 .modal.active {
   display: flex;
+  opacity: 1;
+  pointer-events: all;
+  animation: modal-in 0.6s cubic-bezier(.4,0,.2,1) backwards;
+}
+@keyframes modal-in {
+  0% { opacity: 0;}
+  100% { opacity: 1;}
 }
 .modal-content {
   background: var(--background);
@@ -268,7 +394,21 @@ h2 {
   overflow-y: auto;
   text-align: left;
   position: relative;
+  opacity: 0;
+  transform: scale(0.88);
+  animation: modal-content-in 0.42s cubic-bezier(.4,0,.2,1) 0.1s forwards;
 }
+.modal.active .modal-content {
+  opacity: 1;
+  transform: scale(1);
+}
+@keyframes modal-content-in {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .close-modal {
   position: absolute;
   right: 1.5rem;
@@ -278,10 +418,11 @@ h2 {
   font-size: 2.2rem;
   color: var(--accent);
   cursor: pointer;
-  transition: color 0.15s;
+  transition: color 0.15s, transform 0.23s cubic-bezier(.68,-0.55,.27,1.55);
 }
 .close-modal:hover {
   color: #fff;
+  transform: scale(1.19) rotate(8deg);
 }
 
 .list-titles {
@@ -301,11 +442,12 @@ h2 {
   cursor: pointer;
   box-shadow: 0 2px 12px #a16ee23a;
   margin-bottom: 0.2rem;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.23s, color 0.19s, transform 0.18s cubic-bezier(.68,-0.55,.27,1.55);
 }
-.list-title-btn:hover {
+.list-title-btn:hover, .list-title-btn:focus-visible {
   background: #563b6a;
   color: var(--accent);
+  transform: scale(1.09) rotate(-1.6deg);
 }
 
 #modal-list {
@@ -313,4 +455,5 @@ h2 {
   padding-left: 1.3em;
   font-size: 1.12rem;
   line-height: 1.8;
+  animation: fade-slide-in 0.7s 0.05s forwards;
 }
