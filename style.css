@@ -417,18 +417,12 @@ h2 {
     align-items: stretch;
   }
   .list-categories {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    gap: 0.8rem;
-    padding: 0.8rem;
-    border-radius: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
   .list-cat-btn {
-    width: 100%;
-    justify-content: flex-start;
-    padding: 0.6rem 1rem;
-    font-size: 1rem;
+    margin: 0 !important;
+    box-sizing: border-box;
   }
   .list-card {
     padding: 1.2rem 1rem;
