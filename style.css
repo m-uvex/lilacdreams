@@ -21,6 +21,24 @@ body {
   min-height: 100vh;
 }
 
+button {
+  box-sizing: border-box;
+  padding: 0.6rem 1.5rem;
+  border-radius: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: var(--text-light);
+  transition: background 0.13s, color 0.13s, font-weight 0.13s, box-shadow 0.13s, transform 0.13s;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 .dock {
   position: fixed;
   top: 0;
@@ -270,22 +288,34 @@ h2 {
   width: 100%;
   justify-content: flex-start;
   text-align: left;
-  transition: background 0.22s cubic-bezier(.55,.08,.44,1.05), color 0.22s, box-shadow 0.22s, transform 0.13s;
+  transition:
+    background 0.22s cubic-bezier(.55,.08,.44,1.05),
+    color 0.22s,
+    box-shadow 0.22s,
+    transform 0.13s cubic-bezier(.55,.08,.44,1.05),
+    filter 0.22s;
+  will-change: background, color, box-shadow, transform, filter;
+  transform-origin: center;
 }
+
 .list-cat-btn span {
   font-size: 1.3em;
   filter: drop-shadow(0 0 2px #fff3);
 }
+
 .list-cat-btn.active,
 .list-cat-btn:hover {
   background: linear-gradient(90deg, #b070f7, #a070e2);
   color: #fff;
   box-shadow: 0 0 16px #b47cff44;
   transform: scale(1.06) translateX(3px);
+  filter: drop-shadow(0 0 6px #b47cffcc);
 }
+
 .list-cat-btn:focus-visible {
   outline: 2px solid #cfa6fc;
 }
+
 .list-card {
   flex: 1;
   min-width: 270px;
@@ -376,9 +406,10 @@ h2 {
     border-radius: 1rem;
   }
   .tab-btn {
-    font-size: 0.93rem;
-    padding: 0.32rem 0.7rem;
-    border-radius: 0.7rem;
+    width: auto; /* don't force width */
+    justify-content: center;
+    padding: 0.6rem 1.5rem;
+    font-size: 1.11rem;
   }
   .modern-lists-container {
     flex-direction: column;
