@@ -355,9 +355,17 @@ h2 {
 /* 📱 Mobile layout cleanup */
 @media (max-width: 850px) {
   body {
-    padding: 1rem 0.4rem;
-    max-width: 100vw;
     overflow-x: hidden;
+  }
+  .modern-lists-container,
+  .list-categories,
+  .list-card,
+  .list-modern li {
+    max-width: 100vw;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
   }
   .dock {
     padding-top: 0.2rem;
