@@ -86,6 +86,22 @@
   const modalList = document.getElementById('modal-list');
   const closeModalBtn = modal ? modal.querySelector('.close-modal') : null;
 
+  // Helper for staggered list animation
+  function animateListItems() {
+    const items = modalList ? modalList.querySelectorAll("li") : [];
+    items.forEach(li => {
+      li.style.opacity = 0;
+      li.style.transform = "translateY(24px)";
+      li.style.transition = "opacity 0.45s cubic-bezier(.55,.08,.44,1.05), transform 0.45s cubic-bezier(.55,.08,.44,1.05)";
+    });
+    items.forEach((li, i) => {
+      setTimeout(() => {
+        li.style.opacity = 1;
+        li.style.transform = "translateY(0)";
+      }, 80 + i * 55);
+    });
+  }
+
   function openListModal(listType) {
     const key = listType;
     if (!listsData[key]) return;
@@ -99,19 +115,30 @@
     };
     if (modalTitle) modalTitle.textContent = titles[key] || "List";
     const items = listsData[key];
-    if (modalList) modalList.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+    if (modalList) {
+      modalList.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+    }
     if (modal) {
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
+      setTimeout(animateListItems, 130); // Wait for modal animation, then animate list
     }
   }
 
   function closeListModal() {
     if (modal) modal.classList.remove('active');
     document.body.style.overflow = '';
+    // Optionally reset modal list animation styles
+    if (modalList) {
+      modalList.querySelectorAll("li").forEach(li => {
+        li.style.opacity = "";
+        li.style.transform = "";
+        li.style.transition = "";
+      });
+    }
   }
 
-  // Attach events to buttons (modal + tab navigation)
+  // --- Tab Animation Logic ---
   document.addEventListener('DOMContentLoaded', function() {
     // Modal list buttons
     document.querySelectorAll('.list-title-btn').forEach(btn => {
@@ -125,19 +152,24 @@
     tabBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         if (btn.classList.contains('active')) return;
-        // Remove active from all
         tabBtns.forEach(b => b.classList.remove('active'));
         tabContents.forEach(tc => {
-          tc.classList.remove('active');
+          if (tc.classList.contains('active')) {
+            // For re-animation: remove, force reflow, then re-add
+            tc.classList.remove('active');
+            void tc.offsetWidth; // force reflow
+          }
           setTimeout(() => {
             if (!tc.classList.contains('active')) tc.style.display = "none";
           }, 450);
         });
-        // Add active to clicked
         btn.classList.add('active');
         const nextTab = document.getElementById(btn.dataset.tab);
         if (nextTab) {
           nextTab.style.display = "block";
+          // For re-animation: remove, force reflow, then add
+          nextTab.classList.remove('active');
+          void nextTab.offsetWidth;
           setTimeout(() => { nextTab.classList.add('active'); }, 10);
         }
       });
