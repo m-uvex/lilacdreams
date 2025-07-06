@@ -308,7 +308,7 @@ h2 {
   background: linear-gradient(90deg, #b070f7, #a070e2);
   color: #fff;
   box-shadow: 0 0 16px #b47cff44;
-  transform: scale(1.06) translateX(3px);
+  transform: scale(1.06);
   filter: drop-shadow(0 0 6px #b47cffcc);
 }
 
