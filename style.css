@@ -404,12 +404,12 @@ h2 {
     padding: 0.15rem 0.4rem;
     gap: 0.3rem;
     border-radius: 1rem;
+    max-width: 100%;
+    overflow-x: auto;
   }
   .tab-btn {
-    width: auto; /* don't force width */
-    justify-content: center;
-    padding: 0.6rem 1.5rem;
-    font-size: 1.11rem;
+    font-size: 0.9rem;
+    padding: 0.4rem 0.9rem;
   }
   .modern-lists-container {
     flex-direction: column;
