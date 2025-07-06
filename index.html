@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🩷 LilacDreams 🩷</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet">
   <style>
     p {
       margin-left: 0;
@@ -15,7 +14,6 @@
   </style>
 </head>
 <body>
-  <!-- Tab navigation bar -->
   <div class="dock">
     <div class="tabs">
       <button class="tab-btn active" data-tab="home">Home</button>
@@ -26,7 +24,6 @@
     </div>
   </div>
 
-  <!-- Home tab -->
   <div class="tab-content active" id="home">
     <h1>Welcome Home, Meicy 🩷</h1>
     <div class="section letter">
@@ -47,12 +44,11 @@
     </div>
   </div>
 
-  <!-- Timeline tab -->
   <div class="tab-content" id="timeline">
     <h1>Our Timeline 🕰️</h1>
     <div class="timeline-section section">
       <div class="timeline">
-        <!-- Events same as before -->
+        <!-- Event 1 -->
         <div class="timeline-event">
           <div class="timeline-date">Apr 3rd, 2025</div>
           <div class="timeline-content">
@@ -61,6 +57,7 @@
             <p>The first time we've ever met.</p>
           </div>
         </div>
+        <!-- Event 2 -->
         <div class="timeline-event">
           <div class="timeline-date">Apr 3rd, 2025</div>
           <div class="timeline-content">
@@ -69,6 +66,7 @@
             <p>We moved to discord and started a real chat outside of a game. continued the roleplay and you LOVED to scream :3</p>
           </div>
         </div>
+        <!-- Event 3 -->
         <div class="timeline-event">
           <div class="timeline-date">May 4th, 2025</div>
           <div class="timeline-content">
@@ -76,6 +74,7 @@
             <p>We started dating only 1 month after meeting <3</p>
           </div>
         </div>
+        <!-- Event 4 -->
         <div class="timeline-event">
           <div class="timeline-date">June 9th, 2025</div>
           <div class="timeline-content">
@@ -83,11 +82,11 @@
             <p>You got to meet dave for the first time, and now he's our steve</p>
           </div>
         </div>
+
       </div>
     </div>
   </div>
 
-  <!-- Playlists tab -->
   <div class="tab-content" id="playlists">
     <div class="section playlists">
       <h2>Our Story as a Playlist 🎧💖</h2>
@@ -101,8 +100,9 @@
         style="border-radius: 1rem;">
       </iframe>
     </div>
+
     <div class="section playlists">
-      <h2>The playlist you made me <3</h2>
+      <h2> The playlist you made me <3</h2>
       <iframe 
         src="https://open.spotify.com/embed/playlist/5NRMLCOLnAEnj2RKTMOdSF" 
         width="100%" 
@@ -115,46 +115,17 @@
     </div>
   </div>
 
-  <!-- Lists tab: NEW CARD DESIGN -->
   <div class="tab-content" id="lists">
     <h1>Special Lists</h1>
-    <div class="lists-grid">
-      <div class="list-card" tabindex="0" data-list="why">
-        <div class="emoji">💜</div>
-        <div class="list-title">Why I Love You</div>
-        <div class="list-desc">All the little and big things</div>
-      </div>
-      <div class="list-card" tabindex="0" data-list="dates">
-        <div class="emoji">🍰</div>
-        <div class="list-title">Date Ideas</div>
-        <div class="list-desc">Cute things for us to try</div>
-      </div>
-      <div class="list-card" tabindex="0" data-list="travel">
-        <div class="emoji">✈️</div>
-        <div class="list-title">Places to Visit</div>
-        <div class="list-desc">Our travel bucket list</div>
-      </div>
-      <div class="list-card" tabindex="0" data-list="names">
-        <div class="emoji">🍼</div>
-        <div class="list-title">Future Children Names</div>
-        <div class="list-desc">Names for our maybe-babies</div>
-      </div>
-      <div class="list-card" tabindex="0" data-list="freaky">
-        <div class="emoji">😈</div>
-        <div class="list-title">Freaky Places</div>
-        <div class="list-desc">Spicy adventure ideas</div>
-      </div>
-    </div>
-    <!-- Modal for showing list details, hidden by default -->
-    <div class="lists-modal" id="lists-modal">
-      <div class="lists-modal-content" id="lists-modal-content">
-        <button class="close-modal" onclick="closeListsModal()">&times;</button>
-        <!-- JS will inject content here -->
-      </div>
+    <div class="list-titles">
+      <button class="list-title-btn" data-list="why">Why i love you</button>
+      <button class="list-title-btn" data-list="dates">Date ideas</button>
+      <button class="list-title-btn" data-list="travel">Places we should go to</button>
+      <button class="list-title-btn" data-list="Names">Possible future children names</button>
+      <button class="list-title-btn" data-list="freaky">Places we should get freaky in</button>
     </div>
   </div>
 
-  <!-- Gallery tab -->
   <div class="tab-content" id="gallery">
     <h1>Gallery</h1>
     <div class="section gallery-grid">
@@ -177,7 +148,6 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
   <script>
     // Tab switching with slide+fade transitions
     const tabBtns = document.querySelectorAll('.tab-btn');
@@ -203,87 +173,6 @@
     // Ensure only the active tab is visible on load
     tabContents.forEach(tc => {
       if (!tc.classList.contains('active')) tc.style.display = "none";
-    });
-
-    // Lists modal logic:
-    const lists = {
-      why: {
-        title: "Why I Love You",
-        emoji: "💜",
-        items: [
-          "You always make me laugh, even on tough days.",
-          "You support me, cheer me up, and believe in my dreams.",
-          "You get my weird jokes and quirks.",
-          "You make even ordinary moments magical.",
-          "You love me for who I am."
-        ]
-      },
-      dates: {
-        title: "Date Ideas",
-        emoji: "🍰",
-        items: [
-          "Picnic under the stars.",
-          "Binge-watch our favorite series.",
-          "Cook something new together.",
-          "Midnight stroll, hand in hand.",
-          "Visit a cute coffee shop."
-        ]
-      },
-      travel: {
-        title: "Places to Visit",
-        emoji: "✈️",
-        items: [
-          "Tokyo during cherry blossom season.",
-          "A cozy cabin in the mountains.",
-          "A rainy day in Paris.",
-          "A beach in Greece.",
-          "Your city, my city—anywhere together."
-        ]
-      },
-      names: {
-        title: "Future Children Names",
-        emoji: "🍼",
-        items: [
-          "Lila (if a girl!)",
-          "Arin (gender neutral)",
-          "Finn, Sage, Rhea, or Milo",
-          "Our special pick together"
-        ]
-      },
-      freaky: {
-        title: "Freaky Places",
-        emoji: "😈",
-        items: [
-          "In a tent under the stars 🏕️",
-          "In the shower 🚿",
-          "On a balcony at night 🌃",
-          "In an elevator (if we're quick)",
-          "Anywhere with you 😘"
-        ]
-      }
-    };
-
-    document.querySelectorAll('.list-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const key = card.dataset.list;
-        const listData = lists[key];
-        if (listData) {
-          const modal = document.getElementById('lists-modal');
-          const modalContent = document.getElementById('lists-modal-content');
-          modalContent.innerHTML = `
-            <button class="close-modal" onclick="closeListsModal()">&times;</button>
-            <h2>${listData.emoji} ${listData.title}</h2>
-            <ul>${listData.items.map(item => `<li>${item}</li>`).join('')}</ul>
-          `;
-          modal.classList.add('active');
-        }
-      });
-    });
-    window.closeListsModal = function() {
-      document.getElementById('lists-modal').classList.remove('active');
-    };
-    document.getElementById('lists-modal').addEventListener('click', (e) => {
-      if (e.target.classList.contains('lists-modal')) closeListsModal();
     });
   </script>
 </body>
