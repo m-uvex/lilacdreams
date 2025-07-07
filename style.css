@@ -58,12 +58,12 @@ button {
 
 .tabs {
   background: rgba(46, 36, 69, 0.42);
-  box-shadow: 0 4px 24px rgba(65, 44, 104, 0.26);
+  box-shadow: 0 2px 8px rgba(65, 44, 104, 0.13);
   border-radius: 1.5rem;
   padding: 0.4rem 2rem;
   display: flex;
   gap: 1.5rem;
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(8px);
   pointer-events: auto;
   position: relative;
   justify-content: center;
@@ -80,8 +80,8 @@ button {
   background: linear-gradient(90deg, var(--primary-lilac) 0%, var(--secondary-lilac) 100%);
   color: #fff;
   font-weight: 600;
-  box-shadow: 0 0 12px 2px #e2aaff4d;
-  transform: scale(1.07) translateY(-1px);
+  box-shadow: 0 0 4px 1px #e2aaff33;
+  transform: scale(1.04) translateY(-1px);
 }
 
 .tab-content {
@@ -120,8 +120,8 @@ h2 {
   background: var(--card-bg);
   padding: 1.5rem;
   border-radius: 1rem;
-  box-shadow: var(--box-shadow);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 4px #b070f722;
+  backdrop-filter: blur(4px);
   border: 1.5px solid #b070f730;
 }
 
@@ -254,22 +254,22 @@ h2 {
   flex-direction: column;
   align-items: center;
   perspective: 800px;
+  box-shadow: 0 1px 4px #b070f722;
 }
 .gallery-item img {
   width: 100%;
   max-width: 320px;
   border-radius: 1rem;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08), 0 0px 0px 0 #b070f7;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 0px 0px 0 #b070f7;
   object-fit: cover;
   transition:
-    transform 0.35s cubic-bezier(.55,.08,.44,1.05),
-    box-shadow 0.32s cubic-bezier(.55,.08,.44,1.05),
-    filter 0.23s;
-  will-change: transform;
+    transform 0.25s cubic-bezier(.55,.08,.44,1.05),
+    box-shadow 0.22s cubic-bezier(.55,.08,.44,1.05),
+    filter 0.18s;
 }
 .gallery-item img.pop-tilt {
-  box-shadow: 0 8px 38px 4px #b070f766, 0 0 0 0 #b070f7;
-  filter: brightness(1.04) saturate(1.13);
+  box-shadow: 0 2px 8px 2px #b070f744, 0 0 0 0 #b070f7;
+  filter: brightness(1.02) saturate(1.05);
   z-index: 2;
 }
 .gallery-item .caption {
@@ -364,14 +364,14 @@ h2 {
   min-width: 270px;
   background: var(--card-bg);
   border-radius: 1rem;
-  box-shadow: 0 4px 32px #b070f733;
+  box-shadow: 0 2px 8px #b070f722;
   padding: 2.2rem 1.5rem 2rem 2.2rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   position: relative;
   overflow: visible;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(4px);
   border: 1.5px solid #b070f730;
   animation: list-card-in 0.55s cubic-bezier(.68,-0.55,.27,1.55);
 }
