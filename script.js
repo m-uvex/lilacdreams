@@ -122,7 +122,7 @@
       "Your laugh is the cutest sound in the world.",
       "You support my nerdy ideas (like this website!).",
       "You care so deeply for the people you love.",
-      "You never fail to surprise me.",
+      "You treat me like nobody did before.",
       "You make every moment feel special.",
       "You're the best part of my every day.",
       "You make distance feel less distant.",
@@ -130,16 +130,16 @@
       "You let me be my weird self and love me for it."
     ],
     dates: [
-      "Late-night drive with music.",
       "Stargazing picnic.",
+      "Go on a roadtrip together.",
       "Cooking together (and making a mess).",
       "Movie marathon in pajamas.",
       "Building a pillow fort.",
-      "Visiting a cute café.",
+      "Kid again day.",
       "Dancing in the rain.",
-      "Trying a new hobby together.",
-      "Going to an amusement park.",
-      "Reading each other our favorite books."
+      "Playing a Co-Op game together.",
+      "Riding a ferris wheel together",
+      "Going Urbex together."
     ],
     travel: [
       "See cherry blossoms in Japan.",
