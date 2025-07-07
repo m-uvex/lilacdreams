@@ -172,78 +172,46 @@
       });
     });
 
-    // List item hover effect (adds extra pop/tilt)
-    let listLiRafId = null;
-    let lastLi = null;
-    document.getElementById("modernListCard").addEventListener("mousemove", function(e) {
+    // Optimized List item hover effect (lighter, no rAF, only on enter/leave)
+    const card = document.getElementById("modernListCard");
+    card.addEventListener("mouseenter", function(e) {
       if (e.target.tagName === "LI") {
         const li = e.target;
-        if (listLiRafId) cancelAnimationFrame(listLiRafId);
-        lastLi = li;
-        const rect = li.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const rotateX = ((y - rect.height / 2) / rect.height) * 7;
-        const rotateY = ((x - rect.width / 2) / rect.width) * 8;
-        listLiRafId = requestAnimationFrame(() => {
-          li.style.transition = "transform 0.13s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.13s";
-          li.style.transform = `scale(1.025) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
-          li.style.boxShadow = "0 5px 16px #b070f7aa";
-        });
+        li.style.transition = "transform 0.12s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.12s";
+        li.style.transform = "scale(1.01)";
+        li.style.boxShadow = "0 2px 6px #b070f744";
       }
-    });
-    document.getElementById("modernListCard").addEventListener("mouseleave", function(e) {
-      if (listLiRafId) cancelAnimationFrame(listLiRafId);
-      if (this.querySelectorAll) {
-        this.querySelectorAll("li").forEach(li => {
-          li.style.transform = "";
-          li.style.boxShadow = "";
-          li.style.transition = "transform 0.18s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.18s";
-        });
-      }
-    });
-    document.getElementById("modernListCard").addEventListener("mouseout", function(e) {
+    }, true);
+    card.addEventListener("mouseleave", function(e) {
       if (e.target.tagName === "LI") {
-        if (listLiRafId) cancelAnimationFrame(listLiRafId);
-        e.target.style.transform = "";
-        e.target.style.boxShadow = "";
-        e.target.style.transition = "transform 0.18s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.18s";
+        const li = e.target;
+        li.style.transform = "";
+        li.style.boxShadow = "";
+        li.style.transition = "transform 0.15s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.15s";
       }
-    });
+    }, true);
   });
 })();
 
 // --- GALLERY IMAGE POP & TILT ---
 (() => {
-  let galleryRafId = null;
-  function handleGalleryMotion(e) {
+  // Optimized: only tilt on mouseenter, reset on mouseleave, no rAF, lighter effect
+  function handleGalleryEnter(e) {
     const img = e.currentTarget;
-    if (galleryRafId) cancelAnimationFrame(galleryRafId);
-    const rect = img.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * 4.5;
-    const rotateY = ((x - centerX) / centerX) * 6;
-    galleryRafId = requestAnimationFrame(() => {
-      img.style.transition = "transform 0.15s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.15s";
-      img.style.transform = `scale(1.04) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
-      img.classList.add("pop-tilt");
-    });
+    img.style.transition = "transform 0.13s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.13s";
+    img.style.transform = "scale(1.02)";
+    img.classList.add("pop-tilt");
   }
   function resetGalleryMotion(e) {
     const img = e.currentTarget;
-    if (galleryRafId) cancelAnimationFrame(galleryRafId);
     img.style.transform = "";
     img.classList.remove("pop-tilt");
-    img.style.transition = "transform 0.18s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.18s";
+    img.style.transition = "transform 0.15s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.15s";
   }
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".gallery-item img").forEach(img => {
-      img.addEventListener("mousemove", handleGalleryMotion);
+      img.addEventListener("mouseenter", handleGalleryEnter);
       img.addEventListener("mouseleave", resetGalleryMotion);
-      img.addEventListener("mouseenter", handleGalleryMotion);
     });
   });
 })();
