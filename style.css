@@ -63,7 +63,7 @@ button {
   padding: 0.4rem 2rem;
   display: flex;
   gap: 1.5rem;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(16px);
   pointer-events: auto;
   position: relative;
   justify-content: center;
@@ -121,7 +121,7 @@ h2 {
   padding: 1.5rem;
   border-radius: 1rem;
   box-shadow: 0 1px 4px #b070f722;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(10px);
   border: 1.5px solid #b070f730;
 }
 
@@ -371,7 +371,7 @@ h2 {
   gap: 1.2rem;
   position: relative;
   overflow: visible;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(10px);
   border: 1.5px solid #b070f730;
   animation: list-card-in 0.55s cubic-bezier(.68,-0.55,.27,1.55);
 }
