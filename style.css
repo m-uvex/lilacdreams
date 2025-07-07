@@ -57,7 +57,18 @@ button {
 }
 
 .tabs {
+  background: rgba(46, 36, 69, 0.42);
+  box-shadow: 0 4px 24px rgba(65, 44, 104, 0.26);
+  border-radius: 1.5rem;
+  padding: 0.4rem 2rem;
+  display: flex;
+  gap: 1.5rem;
+  backdrop-filter: blur(16px);
+  pointer-events: auto;
   position: relative;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .tab-btn {
@@ -439,6 +450,7 @@ h2 {
     justify-content: center;
     max-width: 100%;
     overflow-x: hidden;
+    align-items: center;
   }
   .tab-btn {
     flex: 1 1 auto;
@@ -446,6 +458,10 @@ h2 {
     text-align: center;
     padding: 0.5rem 1rem;
     font-size: 0.95rem;
+    margin: 0.2em auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .modern-lists-container {
     flex-direction: column;
