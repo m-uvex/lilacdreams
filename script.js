@@ -172,46 +172,71 @@
       });
     });
 
-    // Optimized List item hover effect (lighter, no rAF, only on enter/leave)
-    const card = document.getElementById("modernListCard");
-    card.addEventListener("mouseenter", function(e) {
-      if (e.target.tagName === "LI") {
-        const li = e.target;
-        li.style.transition = "transform 0.12s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.12s";
-        li.style.transform = "scale(1.01)";
-        li.style.boxShadow = "0 2px 6px #b070f744";
+    // Restore tilting effect for list entries
+    function addTiltEffectToListItems() {
+      document.querySelectorAll('.list-modern li').forEach(li => {
+        let rafId = null;
+        li.addEventListener('mousemove', function(e) {
+          if (rafId) cancelAnimationFrame(rafId);
+          const rect = li.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const rotateX = ((y - rect.height / 2) / rect.height) * 10;
+          const rotateY = ((x - rect.width / 2) / rect.width) * 12;
+          rafId = requestAnimationFrame(() => {
+            li.style.transition = 'transform 0.13s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.13s';
+            li.style.transform = `scale(1.03) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+            li.style.boxShadow = '0 4px 16px #b070f744';
+          });
+        });
+        li.addEventListener('mouseleave', function() {
+          if (rafId) cancelAnimationFrame(rafId);
+          li.style.transform = '';
+          li.style.boxShadow = '';
+          li.style.transition = 'transform 0.18s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.18s';
+        });
+      });
+    }
+    addTiltEffectToListItems();
+    // Re-apply after rendering new list
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('list-cat-btn')) {
+        setTimeout(addTiltEffectToListItems, 100);
       }
-    }, true);
-    card.addEventListener("mouseleave", function(e) {
-      if (e.target.tagName === "LI") {
-        const li = e.target;
-        li.style.transform = "";
-        li.style.boxShadow = "";
-        li.style.transition = "transform 0.15s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.15s";
-      }
-    }, true);
+    });
   });
 })();
 
-// --- GALLERY IMAGE POP & TILT ---
+// --- GALLERY & TIMELINE IMAGE POP & TILT ---
 (() => {
-  // Optimized: only tilt on mouseenter, reset on mouseleave, no rAF, lighter effect
-  function handleGalleryEnter(e) {
-    const img = e.currentTarget;
-    img.style.transition = "transform 0.13s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.13s";
-    img.style.transform = "scale(1.02)";
-    img.classList.add("pop-tilt");
-  }
-  function resetGalleryMotion(e) {
-    const img = e.currentTarget;
-    img.style.transform = "";
-    img.classList.remove("pop-tilt");
-    img.style.transition = "transform 0.15s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.15s";
-  }
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".gallery-item img").forEach(img => {
-      img.addEventListener("mouseenter", handleGalleryEnter);
-      img.addEventListener("mouseleave", resetGalleryMotion);
+  function addTiltToImages(selector) {
+    document.querySelectorAll(selector).forEach(img => {
+      let rafId = null;
+      img.addEventListener('mousemove', function(e) {
+        if (rafId) cancelAnimationFrame(rafId);
+        const rect = img.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * 8;
+        const rotateY = ((x - centerX) / centerX) * 10;
+        rafId = requestAnimationFrame(() => {
+          img.style.transition = 'transform 0.15s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.15s';
+          img.style.transform = `scale(1.04) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+          img.classList.add('pop-tilt');
+        });
+      });
+      img.addEventListener('mouseleave', function() {
+        if (rafId) cancelAnimationFrame(rafId);
+        img.style.transform = '';
+        img.classList.remove('pop-tilt');
+        img.style.transition = 'transform 0.18s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.18s';
+      });
     });
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    addTiltToImages('.gallery-item img');
+    addTiltToImages('.timeline-img');
   });
 })();
