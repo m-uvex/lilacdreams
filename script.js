@@ -78,19 +78,6 @@
     // Tab switching
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
-    const tabHighlight = document.querySelector('.tab-highlight');
-
-    function moveTabHighlight() {
-      const activeBtn = document.querySelector('.tab-btn.active');
-      if (!activeBtn || !tabHighlight) return;
-      const btnRect = activeBtn.getBoundingClientRect();
-      const tabsRect = activeBtn.parentElement.getBoundingClientRect();
-      tabHighlight.style.width = btnRect.width + 'px';
-      tabHighlight.style.left = (btnRect.left - tabsRect.left) + 'px';
-    }
-
-    moveTabHighlight();
-    window.addEventListener('resize', moveTabHighlight);
 
     tabBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -108,7 +95,6 @@
           nextTab.style.display = "block";
           setTimeout(() => { nextTab.classList.add('active'); }, 10);
         }
-        setTimeout(moveTabHighlight, 20);
       });
     });
 
