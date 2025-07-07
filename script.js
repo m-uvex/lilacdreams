@@ -29,10 +29,7 @@
     if (!listsData[key]) return;
     const titles = {
       why: "Why I Love You",
-      dates: "Date Ideas",
-      travel: "Places We Should Go To",
-      Names: "Possible Future Children Names",
-      freaky: "Places We Should Get Freaky In"
+      dates: "Date Ideas"
     };
     if (modalTitle) modalTitle.textContent = titles[key] || "List";
     const items = listsData[key];
@@ -140,42 +137,6 @@
       "Playing a Co-Op game together.",
       "Riding a ferris wheel together",
       "Going Urbex together."
-    ],
-    travel: [
-      "See cherry blossoms in Japan.",
-      "Visit Paris and see the Eiffel Tower.",
-      "Go to an aquarium together.",
-      "Walk on a beach at sunset.",
-      "Explore a new city hand-in-hand.",
-      "Go to a hot springs resort.",
-      "Take a train trip along a scenic route.",
-      "Visit a cat café (or dog café!).",
-      "See the northern lights.",
-      "Roadtrip with just the two of us."
-    ],
-    Names: [
-      "Aster",
-      "Eli",
-      "Lila",
-      "Sora",
-      "Noah",
-      "Nova",
-      "Mira",
-      "Eren",
-      "Rhea",
-      "Juno"
-    ],
-    freaky: [
-      "In a tent while camping.",
-      "In the shower.",
-      "On a rooftop under the stars.",
-      "In a photo booth.",
-      "On the beach at night.",
-      "In the backseat of a car.",
-      "In a cozy blanket fort.",
-      "On a balcony overlooking the city.",
-      "In a fancy hotel room.",
-      "On a rainy day by the window."
     ]
   };
 
@@ -184,10 +145,7 @@
     if (!card) return;
     const titles = {
       why: "Why I Love You",
-      dates: "Date Ideas",
-      travel: "Places We Should Go To",
-      Names: "Possible Future Children Names",
-      freaky: "Places We Should Get Freaky In"
+      dates: "Date Ideas"
     };
     const items = listsData[type] || [];
     card.innerHTML = `
