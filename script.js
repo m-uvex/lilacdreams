@@ -78,6 +78,19 @@
     // Tab switching
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
+    const tabHighlight = document.querySelector('.tab-highlight');
+
+    function moveTabHighlight() {
+      const activeBtn = document.querySelector('.tab-btn.active');
+      if (!activeBtn || !tabHighlight) return;
+      const btnRect = activeBtn.getBoundingClientRect();
+      const tabsRect = activeBtn.parentElement.getBoundingClientRect();
+      tabHighlight.style.width = btnRect.width + 'px';
+      tabHighlight.style.left = (btnRect.left - tabsRect.left) + 'px';
+    }
+
+    moveTabHighlight();
+    window.addEventListener('resize', moveTabHighlight);
 
     tabBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -95,6 +108,7 @@
           nextTab.style.display = "block";
           setTimeout(() => { nextTab.classList.add('active'); }, 10);
         }
+        setTimeout(moveTabHighlight, 20);
       });
     });
 
@@ -215,30 +229,41 @@
     });
 
     // List item hover effect (adds extra pop/tilt)
+    let listLiRafId = null;
+    let lastLi = null;
     document.getElementById("modernListCard").addEventListener("mousemove", function(e) {
       if (e.target.tagName === "LI") {
         const li = e.target;
+        if (listLiRafId) cancelAnimationFrame(listLiRafId);
+        lastLi = li;
         const rect = li.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        const rotateX = ((y - rect.height / 2) / rect.height) * 12;
-        const rotateY = ((x - rect.width / 2) / rect.width) * 14;
-        li.style.transform = `scale(1.13) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
-        li.style.boxShadow = "0 10px 30px #b070f7aa";
+        const rotateX = ((y - rect.height / 2) / rect.height) * 7;
+        const rotateY = ((x - rect.width / 2) / rect.width) * 8;
+        listLiRafId = requestAnimationFrame(() => {
+          li.style.transition = "transform 0.13s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.13s";
+          li.style.transform = `scale(1.025) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+          li.style.boxShadow = "0 5px 16px #b070f7aa";
+        });
       }
     });
     document.getElementById("modernListCard").addEventListener("mouseleave", function(e) {
-      if (e.target.tagName === "UL" || e.target.tagName === "DIV") {
+      if (listLiRafId) cancelAnimationFrame(listLiRafId);
+      if (this.querySelectorAll) {
         this.querySelectorAll("li").forEach(li => {
           li.style.transform = "";
           li.style.boxShadow = "";
+          li.style.transition = "transform 0.18s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.18s";
         });
       }
     });
     document.getElementById("modernListCard").addEventListener("mouseout", function(e) {
       if (e.target.tagName === "LI") {
+        if (listLiRafId) cancelAnimationFrame(listLiRafId);
         e.target.style.transform = "";
         e.target.style.boxShadow = "";
+        e.target.style.transition = "transform 0.18s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.18s";
       }
     });
   });
@@ -246,22 +271,29 @@
 
 // --- GALLERY IMAGE POP & TILT ---
 (() => {
+  let galleryRafId = null;
   function handleGalleryMotion(e) {
     const img = e.currentTarget;
+    if (galleryRafId) cancelAnimationFrame(galleryRafId);
     const rect = img.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * 7;
-    const rotateY = ((x - centerX) / centerX) * 9;
-    img.style.transform = `scale(1.10) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
-    img.classList.add("pop-tilt");
+    const rotateX = ((y - centerY) / centerY) * 4.5;
+    const rotateY = ((x - centerX) / centerX) * 6;
+    galleryRafId = requestAnimationFrame(() => {
+      img.style.transition = "transform 0.15s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.15s";
+      img.style.transform = `scale(1.04) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+      img.classList.add("pop-tilt");
+    });
   }
   function resetGalleryMotion(e) {
     const img = e.currentTarget;
+    if (galleryRafId) cancelAnimationFrame(galleryRafId);
     img.style.transform = "";
     img.classList.remove("pop-tilt");
+    img.style.transition = "transform 0.18s cubic-bezier(.55,.08,.44,1.05), box-shadow 0.18s";
   }
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".gallery-item img").forEach(img => {
